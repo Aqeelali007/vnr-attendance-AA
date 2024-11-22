@@ -1,3 +1,8 @@
+const baseUrl =
+    window.location.hostname === "localhost"
+        ? "http://localhost:3000" // Adjust port to match your local server
+        : "https://vnr-attendance-aa-94bx.vercel.app";
+
 
 document.addEventListener('DOMContentLoaded', () => {
   const submitButton = document.getElementById('submit');
@@ -18,7 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // console.log(password);
 
     try {
-      const res = await fetch('/submit', {
+      const res = await fetch(`${baseUrl}/submit`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
