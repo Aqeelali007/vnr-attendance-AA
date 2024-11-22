@@ -159,4 +159,4 @@ app.post('/logout',(req,res)=>{
   res.redirect('/');
 });
 
-module.exports = app;
+export default app;
