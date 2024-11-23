@@ -2,6 +2,10 @@ const attendanceDiv = document.getElementById('attendance-data');
 const bunkDiv = document.getElementById('bunkData');
 const loading = document.getElementById('loading');
 const layer = document.getElementById('overlay');
+const baseUrl =
+    window.location.hostname === "localhost"
+        ? "http://localhost:3000" // Adjust port to match your local server
+        : "https://vnr-attendance-aa-s6ub.vercel.app";
 
 var flag;
 // Show a placeholder while fetching updated data
@@ -55,7 +59,7 @@ const fetchAttendance = async () => {
     }
 
     try {
-        const res = await fetch('/submit', {
+        const res = await fetch(`${baseUrl}/submit`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ username, password })
