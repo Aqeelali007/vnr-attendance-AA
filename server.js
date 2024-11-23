@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
+import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import puppeteer from 'puppeteer';
 import fetch from 'node-fetch';
@@ -19,6 +20,7 @@ const SECRET_KEY = 'aqeel';
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use(cookieParser());
 
