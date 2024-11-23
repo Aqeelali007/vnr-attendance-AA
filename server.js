@@ -51,10 +51,10 @@ const scrapeAttendance = async (username, password) => {
   await page.type(passwordSelector, password); 
   await page.waitForSelector(loginButtonSelector); 
   await page.click(loginButtonSelector);
-  // console.log("logging in");
+  console.log("logging in");
   await page.waitForNavigation({ waitUntil: 'networkidle2' });
 
-  // console.log("login navigation done");
+  console.log("login navigation done");
 
   let studentId = null;
 
