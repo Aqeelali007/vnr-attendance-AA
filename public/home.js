@@ -5,7 +5,7 @@ const layer = document.getElementById('overlay');
 const baseUrl =
     window.location.hostname === "localhost"
         ? "http://localhost:3000" // Adjust port to match your local server
-        : "https://vnr-attendance-aa-s6ub.vercel.app";
+        : "https://vnr-attendance-aa-94bx.vercel.app";
 
 var flag;
 // Show a placeholder while fetching updated data
