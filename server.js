@@ -30,6 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Function to scrape attendance using Puppeteer
 const scrapeAttendance = async (username, password) => {
+  console.log("inside the main scraper");
   const browser = await puppeteer.launch({
     headless: true,
     args: ['--no-sandbox', '--disable-gpu',]
