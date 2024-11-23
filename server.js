@@ -131,6 +131,7 @@ app.post('/submit', async (req, res) => {
   console.log(password);
 
   try {
+    console.log("inside scraping");
     const attendanceData = await scrapeAttendance(username, password);
     
     const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: '30d' });
