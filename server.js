@@ -126,9 +126,9 @@ app.get('/', (req, res) => {
 app.post('/submit', async (req, res) => {
   console.log("into submit route");
   const username = req.body.username;
-  // console.log(username);
+  console.log(username);
   const password = req.body.password;
-  // console.log(password);
+  console.log(password);
 
   try {
     const attendanceData = await scrapeAttendance(username, password);
