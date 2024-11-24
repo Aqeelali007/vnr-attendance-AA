@@ -3,12 +3,14 @@ import bodyParser from 'body-parser';
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
-import puppeteer from 'puppeteer';
+import puppeteer from 'puppeteer-core';
 import fetch from 'node-fetch';
 import path from "path";
 import { fileURLToPath } from 'url';
 import { timeout } from 'puppeteer';
 import jsdom from 'jsdom';
+import serverless from 'serverless-http';
+import chromium from 'chrome-aws-lambda';
 
 const { JSDOM } = jsdom;
 
@@ -30,10 +32,18 @@ app.use(cookieParser());
 // Function to scrape attendance using Puppeteer
 const scrapeAttendance = async (username, password) => {
   console.log("inside the main scraper");
+
+  const executablePath = await chromium.executablePath;
   const browser = await puppeteer.launch({
     headless: true,
-    args: ['--no-sandbox', '--disable-gpu',]
+    args: chromium.args,
+    executablePath: executablePath || '/usr/bin/google-chrome-stable', // Fallback for local testing
+    defaultViewport: chromium.defaultViewport
   });
+  // const browser = await puppeteer.launch({
+  //   headless: true,
+  //   args: ['--no-sandbox', '--disable-gpu',]
+  // });
   const page = await browser.newPage();
 
   const loginUrl = 'https://automation.vnrvjiet.ac.in/eduprime3';
@@ -165,4 +175,4 @@ app.post('/logout',(req,res)=>{
 
 app.use(express.static(path.join(__dirname, 'public')));
 
-export default app;
+export default serverless(app);
