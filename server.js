@@ -25,7 +25,6 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 // Serve static files from the root directory
-app.use(express.static(path.join(__dirname, 'public')));
 // console.log(path.join(__dirname, 'login.html'));
 
 // Function to scrape attendance using Puppeteer
@@ -163,5 +162,7 @@ app.post('/logout',(req,res)=>{
   res.clearCookie(token);
   res.redirect('/');
 });
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 export default app;
