@@ -24,7 +24,7 @@
     "jsonwebtoken": "^9.0.2",
     "node-fetch": "^3.3.2",
     "nodemon": "^3.1.7",
-    "puppeteer-core": "^19.7.4",
+    "puppeteer-core": "^10.1.0",
     "serverless-http": "^3.1.0"
   }
 }
